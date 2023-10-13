@@ -1,0 +1,83 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>get it done NOW!</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+    * {
+        box-sizing: border-box;
+        color: black;
+        user-select: none;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: #cbdcf7;
+    }
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        width: 300px;
+        text-align: center;
+    }
+    .container .years {
+        font-size: 8em;
+        font-weight: 700;
+        color: rgb(86, 141, 229);
+        text-align: end;
+    }
+    .container .fracs {
+        font-size: 2em;
+        font-weight: 700;
+        color: rgb(86, 141, 229);
+        padding: 10px 0 0 10px;
+        text-align: start;
+    }
+    .container .item {
+        float: left;
+        width: 150px;
+        margin: 0;
+        line-height: 1em;
+    }
+    .container .display {
+        display: inline-block;
+        text-align: start;
+        width: 300px;
+        font-size: 1.2em;
+        padding: 0 0 0 10px;
+        font-weight: bold;
+        color: rgb(122, 154, 207);
+    }
+
+</style>
+<body>
+    <div class="container">
+        <div class="age display">AGE</div>
+        <div class="years item"></div>
+        <div class="fracs item"></div>
+    </div>
+</body>
+<script>
+    const myBirthday = new Date(2004, 3, 4).getTime();
+
+    const calculate = setInterval(() => {
+        let currDay = new Date().getTime();
+
+        let diff = currDay - myBirthday;
+        let yearDiff = diff / (1000 * 60 * 60 * 24 * 365.25);
+        let ageYears = Math.floor(yearDiff);
+        let ageFracs = (yearDiff - ageYears).toFixed(9);
+        ageFracs = ageFracs.toString().substring(1);
+
+        document.querySelector('.years').innerHTML = ageYears;
+        document.querySelector('.fracs').innerHTML = ageFracs;
+    }, 0.00000001)
+</script>
+</html>
+
+
